@@ -5,11 +5,11 @@ import { AnimatePresence, motion } from "motion/react";
 
 const linkClass = "hover:text-game-yellow transition-colors";
 
-const links = [
+const links: { to: "/" | "/gallery" | "/contact"; label: string; exact: boolean }[] = [
   { to: "/", label: "Home", exact: true },
-  { to: "/gallery", label: "Gallery" },
-  { to: "/contact", label: "Contact" },
-] as const;
+  { to: "/gallery", label: "Gallery", exact: false },
+  { to: "/contact", label: "Contact", exact: false },
+];
 
 export function SiteNav() {
   const [open, setOpen] = useState(false);
@@ -33,7 +33,7 @@ export function SiteNav() {
               to={link.to}
               className={linkClass}
               activeProps={{ className: "text-game-yellow" }}
-              activeOptions={link.exact ? { exact: true } : undefined}
+              activeOptions={{ exact: link.exact }}
             >
               {link.label}
             </Link>
@@ -84,7 +84,7 @@ export function SiteNav() {
                     onClick={() => setOpen(false)}
                     className={linkClass}
                     activeProps={{ className: "text-game-yellow" }}
-                    activeOptions={link.exact ? { exact: true } : undefined}
+                    activeOptions={{ exact: link.exact }}
                   >
                     {link.label}
                   </Link>
