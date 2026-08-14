@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { motion } from "motion/react";
 
 import { SiteNav } from "@/components/site-nav";
+import { Reveal } from "@/components/reveal";
 import { ContactFooter } from "@/components/contact-footer";
 import heroBoard from "@/assets/hero-board.jpg";
 import modeAdventure from "@/assets/mode-adventure.jpg";
@@ -33,7 +35,11 @@ function Index() {
 
       <header className="relative overflow-hidden pt-20 pb-32">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full mb-6">
               <span className="text-[10px] font-bold uppercase tracking-widest">
                 Invented in Nigeria
@@ -52,18 +58,25 @@ function Index() {
               play, but hard to master.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.96 }}
                 href="#ways-to-play"
-                className="bg-game-red px-8 py-4 rounded-lg font-display text-2xl tracking-wide hover:scale-105 transition-transform"
+                className="bg-game-red px-8 py-4 rounded-lg font-display text-2xl tracking-wide"
               >
                 EXPLORE THE GAME
-              </a>
+              </motion.a>
               <div className="flex items-center gap-4 px-6 border border-white/20 rounded-lg">
                 <span className="text-xs font-bold uppercase">Ages 5 to 99+</span>
               </div>
             </div>
-          </div>
-          <div className="relative">
+          </motion.div>
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="absolute -inset-20 bg-game-red/20 blur-[120px] rounded-full" />
             <img
               src={heroBoard}
@@ -72,7 +85,7 @@ function Index() {
               alt="Top-down view of the NewColorGame board with colored letter tiles, tokens and color cards"
               className="relative w-full aspect-square object-cover border border-white/10 rounded-2xl"
             />
-          </div>
+          </motion.div>
         </div>
       </header>
 
