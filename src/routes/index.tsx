@@ -108,7 +108,7 @@ function Index() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-game-yellow transition-colors">
+            <Reveal className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-game-yellow transition-colors">
               <div className="text-game-yellow font-display text-2xl mb-4">MODE 01</div>
               <h3 className="text-3xl font-bold mb-4">Adventure: School to Home</h3>
               <p className="text-white/60 mb-8">
@@ -134,9 +134,9 @@ function Index() {
                 alt="Game tokens moving along the A to Z path of colored letter tiles"
                 className="w-full aspect-video object-cover rounded-xl"
               />
-            </div>
+            </Reveal>
 
-            <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-game-red transition-colors">
+            <Reveal delay={0.12} className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-game-red transition-colors">
               <div className="text-game-red font-display text-2xl mb-4">MODE 02</div>
               <h3 className="text-3xl font-bold mb-4">Spelling: Learn Words</h3>
               <p className="text-white/60 mb-8">
@@ -162,7 +162,7 @@ function Index() {
                 alt="Color cards next to letter tiles spelling a word"
                 className="w-full aspect-video object-cover rounded-xl"
               />
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
