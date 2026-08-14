@@ -182,14 +182,19 @@ function Index() {
               { src: gallery2, alt: "Hands holding colored playing cards over the board" },
               { src: gallery3, alt: "Close-up of the colorful alphabet board grid" },
               { src: gallery4, alt: "A family playing NewColorGame at the dining table" },
-            ].map((image) => (
-              <img
+            ].map((image, i) => (
+              <motion.img
                 key={image.src}
                 src={image.src}
                 loading="lazy"
                 width={900}
                 height={900}
                 alt={image.alt}
+                initial={{ opacity: 0, scale: 0.94 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
                 className="aspect-square object-cover border border-white/10 rounded-2xl"
               />
             ))}
