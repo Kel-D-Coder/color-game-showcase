@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { motion } from "motion/react";
 
 import { SiteNav } from "@/components/site-nav";
+import { Reveal } from "@/components/reveal";
 import { ContactFooter } from "@/components/contact-footer";
 import heroBoard from "@/assets/hero-board.jpg";
 import modeAdventure from "@/assets/mode-adventure.jpg";
@@ -33,7 +35,11 @@ function Index() {
 
       <header className="relative overflow-hidden pt-20 pb-32">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full mb-6">
               <span className="text-[10px] font-bold uppercase tracking-widest">
                 Invented in Nigeria
@@ -52,18 +58,25 @@ function Index() {
               play, but hard to master.
             </p>
             <div className="flex flex-wrap gap-4">
-              <a
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.96 }}
                 href="#ways-to-play"
-                className="bg-game-red px-8 py-4 rounded-lg font-display text-2xl tracking-wide hover:scale-105 transition-transform"
+                className="bg-game-red px-8 py-4 rounded-lg font-display text-2xl tracking-wide"
               >
                 EXPLORE THE GAME
-              </a>
+              </motion.a>
               <div className="flex items-center gap-4 px-6 border border-white/20 rounded-lg">
                 <span className="text-xs font-bold uppercase">Ages 5 to 99+</span>
               </div>
             </div>
-          </div>
-          <div className="relative">
+          </motion.div>
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          >
             <div className="absolute -inset-20 bg-game-red/20 blur-[120px] rounded-full" />
             <img
               src={heroBoard}
@@ -72,7 +85,7 @@ function Index() {
               alt="Top-down view of the NewColorGame board with colored letter tiles, tokens and color cards"
               className="relative w-full aspect-square object-cover border border-white/10 rounded-2xl"
             />
-          </div>
+          </motion.div>
         </div>
       </header>
 
@@ -95,7 +108,7 @@ function Index() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-game-yellow transition-colors">
+            <Reveal className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-game-yellow transition-colors">
               <div className="text-game-yellow font-display text-2xl mb-4">MODE 01</div>
               <h3 className="text-3xl font-bold mb-4">Adventure: School to Home</h3>
               <p className="text-white/60 mb-8">
@@ -121,9 +134,9 @@ function Index() {
                 alt="Game tokens moving along the A to Z path of colored letter tiles"
                 className="w-full aspect-video object-cover rounded-xl"
               />
-            </div>
+            </Reveal>
 
-            <div className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-game-red transition-colors">
+            <Reveal delay={0.12} className="p-8 bg-white/5 border border-white/10 rounded-3xl hover:border-game-red transition-colors">
               <div className="text-game-red font-display text-2xl mb-4">MODE 02</div>
               <h3 className="text-3xl font-bold mb-4">Spelling: Learn Words</h3>
               <p className="text-white/60 mb-8">
@@ -149,7 +162,7 @@ function Index() {
                 alt="Color cards next to letter tiles spelling a word"
                 className="w-full aspect-video object-cover rounded-xl"
               />
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -169,14 +182,19 @@ function Index() {
               { src: gallery2, alt: "Hands holding colored playing cards over the board" },
               { src: gallery3, alt: "Close-up of the colorful alphabet board grid" },
               { src: gallery4, alt: "A family playing NewColorGame at the dining table" },
-            ].map((image) => (
-              <img
+            ].map((image, i) => (
+              <motion.img
                 key={image.src}
                 src={image.src}
                 loading="lazy"
                 width={900}
                 height={900}
                 alt={image.alt}
+                initial={{ opacity: 0, scale: 0.94 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                whileHover={{ scale: 1.03 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
                 className="aspect-square object-cover border border-white/10 rounded-2xl"
               />
             ))}

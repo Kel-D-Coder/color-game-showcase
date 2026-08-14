@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { motion } from "motion/react";
 
 import { SiteNav } from "@/components/site-nav";
 import { ContactFooter } from "@/components/contact-footer";
@@ -52,9 +53,13 @@ function GalleryPage() {
 
       <section className="max-w-7xl mx-auto px-6 pb-24">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {photos.map((photo) => (
-            <figure
+          {photos.map((photo, i) => (
+            <motion.figure
               key={photo.src}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
               className="group overflow-hidden border border-white/10 rounded-2xl bg-white/5"
             >
               <img
@@ -68,7 +73,7 @@ function GalleryPage() {
               <figcaption className="px-5 py-4 text-[10px] font-bold uppercase tracking-widest text-white/40">
                 {photo.caption}
               </figcaption>
-            </figure>
+            </motion.figure>
           ))}
         </div>
       </section>
