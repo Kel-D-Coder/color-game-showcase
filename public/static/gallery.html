@@ -4,138 +4,133 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Gallery — NewColorGame in Action</title>
-    <meta
-      name="description"
-      content="Photos of the NewColorGame board, cards and tokens, plus families and school children playing the game across Nigeria."
-    />
+    <meta name="description" content="Photos of the NewColorGame board, cards and tokens, plus families and school children playing the game across Nigeria." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: "#131313", fg: "#fbfbfb",
+              red: "#ea2027", yellow: "#f1c40f", green: "#009432",
+              blue: "#0652dd", magenta: "#ed4fb5", naija: "#008751",
+            },
+            fontFamily: {
+              display: ['"Bebas Neue"', "Impact", "sans-serif"],
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
+      .reveal.in { opacity: 1; transform: none; }
+      @keyframes wiggle { 0%,100%{transform:rotate(0)} 25%{transform:rotate(8deg)} 75%{transform:rotate(-8deg)} }
+      .wiggle { animation: wiggle 6s ease-in-out infinite; }
+      ::selection { background: #f1c40f; color: #000; }
+    </style>
   </head>
-  <body>
-    <nav class="nav">
-      <div class="wrap nav-inner">
-        <a class="brand" href="index.html">
-          <span class="brand-mark"></span>
-          <span class="brand-name display">NEWCOLORGAME</span>
+  <body class="bg-bg text-fg font-sans antialiased">
+    <nav class="sticky top-0 z-50 bg-bg/85 backdrop-blur border-b border-white/10">
+      <div class="mx-auto max-w-7xl px-6 flex h-20 items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2">
+          <span class="wiggle h-8 w-8 rounded bg-gradient-to-tr from-red via-yellow to-green"></span>
+          <span class="font-display text-2xl tracking-wide">NEWCOLORGAME</span>
         </a>
-        <div class="nav-links">
-          <a href="index.html">Home</a>
-          <a class="active" href="gallery.html">Gallery</a>
-          <a href="contact.html">Contact</a>
-        </div>
-        <div class="nav-actions">
-          <a class="btn-buy" href="https://wa.me/2348079088854">Buy Now</a>
-          <button class="burger" type="button" aria-label="Open menu" aria-expanded="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+        <div class="hidden md:flex gap-8 text-[13px] font-medium uppercase tracking-[0.15em]"><a href="index.html" class="hover:text-yellow transition">Home</a><a href="gallery.html" class="text-yellow">Gallery</a><a href="contact.html" class="hover:text-yellow transition">Contact</a></div>
+        <div class="flex items-center gap-3">
+          <a href="https://wa.me/2348079088854" class="hidden sm:inline-block rounded-full bg-white px-6 py-2 text-[11px] font-bold uppercase text-black transition hover:bg-yellow">Buy Now</a>
+          <button type="button" class="burger md:hidden p-2" aria-label="Open menu" aria-expanded="false">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
           </button>
         </div>
       </div>
-      <div class="mobile-menu">
-        <div class="mobile-menu-inner">
-          <a href="index.html">Home</a>
-          <a href="gallery.html">Gallery</a>
-          <a href="contact.html">Contact</a>
-          <a class="btn-buy" href="https://wa.me/2348079088854">Buy Now</a>
+      <div class="mobile-menu hidden border-t border-white/10 md:hidden">
+        <div class="flex flex-col gap-5 px-6 py-6 text-[13px] uppercase tracking-[0.15em]">
+          <a href="index.html" class="hover:text-yellow transition">Home</a><a href="gallery.html" class="hover:text-yellow transition">Gallery</a><a href="contact.html" class="hover:text-yellow transition">Contact</a>
+          <a href="https://wa.me/2348079088854" class="rounded-full bg-white px-6 py-3 text-center text-[11px] font-bold text-black">Buy Now</a>
         </div>
       </div>
     </nav>
 
-    <header class="wrap page-head">
-      <h1 class="display">THE GAME <span style="color: var(--yellow)">IN ACTION</span></h1>
-      <p class="muted">
-        Board, cards, tokens and the people playing them — from classrooms to living rooms.
-      </p>
+    <header class="mx-auto max-w-7xl px-6 py-16">
+      <h1 class="font-display text-6xl md:text-7xl">THE GAME <span class="text-yellow">IN ACTION</span></h1>
+      <p class="mt-4 max-w-xl text-white/60">Board, cards, tokens and the people playing them — from classrooms to living rooms.</p>
     </header>
-
-    <section class="wrap" style="padding-bottom: 96px">
-      <div class="photo-grid">
-        <figure class="reveal">
-          <img src="img/hero-board.jpg" loading="lazy" width="900" height="900" alt="Top-down view of the full NewColorGame board" />
-          <figcaption>The board</figcaption>
-        </figure>
-        <figure class="reveal">
-          <img src="img/gallery-3.jpg" loading="lazy" width="900" height="900" alt="Close-up of colored alphabet tiles" />
-          <figcaption>Letter tiles</figcaption>
-        </figure>
-        <figure class="reveal">
-          <img src="img/gallery-2.jpg" loading="lazy" width="900" height="900" alt="Hands holding colored playing cards" />
-          <figcaption>Color cards</figcaption>
-        </figure>
-        <figure class="reveal">
-          <img src="img/mode-adventure.jpg" loading="lazy" width="900" height="900" alt="Tokens along the A to Z path" />
-          <figcaption>Adventure mode</figcaption>
-        </figure>
-        <figure class="reveal">
-          <img src="img/mode-spelling.jpg" loading="lazy" width="900" height="900" alt="Cards and letter tiles spelling a word" />
-          <figcaption>Spelling mode</figcaption>
-        </figure>
-        <figure class="reveal">
-          <img src="img/gallery-1.jpg" loading="lazy" width="900" height="900" alt="School children playing NewColorGame" />
-          <figcaption>School to home</figcaption>
-        </figure>
-        <figure class="reveal">
-          <img src="img/gallery-4.jpg" loading="lazy" width="900" height="900" alt="A family playing NewColorGame at a table" />
-          <figcaption>Family night</figcaption>
-        </figure>
+    <section class="mx-auto max-w-7xl px-6 pb-24">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <figure class="reveal group overflow-hidden rounded-2xl border border-white/10">
+            <img src="img/hero-board.jpg" loading="lazy" width="900" height="900" class="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" alt="Top-down view of the full NewColorGame board" />
+            <figcaption class="px-4 py-3 text-xs uppercase tracking-widest text-white/40">The board</figcaption>
+          </figure>
+          <figure class="reveal group overflow-hidden rounded-2xl border border-white/10">
+            <img src="img/gallery-3.jpg" loading="lazy" width="900" height="900" class="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" alt="Close-up of colored alphabet tiles" />
+            <figcaption class="px-4 py-3 text-xs uppercase tracking-widest text-white/40">Letter tiles</figcaption>
+          </figure>
+          <figure class="reveal group overflow-hidden rounded-2xl border border-white/10">
+            <img src="img/gallery-2.jpg" loading="lazy" width="900" height="900" class="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" alt="Hands holding colored playing cards" />
+            <figcaption class="px-4 py-3 text-xs uppercase tracking-widest text-white/40">Color cards</figcaption>
+          </figure>
+          <figure class="reveal group overflow-hidden rounded-2xl border border-white/10">
+            <img src="img/mode-adventure.jpg" loading="lazy" width="900" height="900" class="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" alt="Tokens along the A to Z path" />
+            <figcaption class="px-4 py-3 text-xs uppercase tracking-widest text-white/40">Adventure mode</figcaption>
+          </figure>
+          <figure class="reveal group overflow-hidden rounded-2xl border border-white/10">
+            <img src="img/mode-spelling.jpg" loading="lazy" width="900" height="900" class="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" alt="Cards and letter tiles spelling a word" />
+            <figcaption class="px-4 py-3 text-xs uppercase tracking-widest text-white/40">Spelling mode</figcaption>
+          </figure>
+          <figure class="reveal group overflow-hidden rounded-2xl border border-white/10">
+            <img src="img/gallery-1.jpg" loading="lazy" width="900" height="900" class="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" alt="School children playing NewColorGame" />
+            <figcaption class="px-4 py-3 text-xs uppercase tracking-widest text-white/40">School to home</figcaption>
+          </figure>
+          <figure class="reveal group overflow-hidden rounded-2xl border border-white/10">
+            <img src="img/gallery-4.jpg" loading="lazy" width="900" height="900" class="aspect-square w-full object-cover transition duration-500 group-hover:scale-105" alt="A family playing NewColorGame at a table" />
+            <figcaption class="px-4 py-3 text-xs uppercase tracking-widest text-white/40">Family night</figcaption>
+          </figure>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="wrap">
-        <div class="footer-grid">
+
+    <footer class="border-t border-white/10 bg-white/[0.02]">
+      <div class="mx-auto max-w-7xl px-6 py-20">
+        <div class="grid gap-12 md:grid-cols-2">
           <div>
-            <h2 class="display">BRING THE GAME HOME</h2>
-            <p>
-              Interested in stocking NewColorGame or hosting a tournament? Get in touch with our
-              team today.
-            </p>
-            <div class="contact-list">
-              <a class="contact-item" href="https://wa.me/2348079088854">
-                <span class="contact-icon green">Chat</span>
-                <span>
-                  <span class="contact-label">WhatsApp — for business</span>
-                  <span class="contact-value">08079088854</span>
-                </span>
+            <h2 class="font-display text-4xl md:text-5xl">BRING THE GAME HOME</h2>
+            <p class="mt-4 text-white/60">Interested in stocking NewColorGame or hosting a tournament? Get in touch with our team today.</p>
+            <div class="mt-8 space-y-4">
+              <a href="https://wa.me/2348079088854" class="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4 transition hover:border-green">
+                <span class="rounded-lg bg-green px-3 py-2 text-xs font-bold uppercase">Chat</span>
+                <span><span class="block text-xs uppercase tracking-widest text-white/40">WhatsApp — for business</span><span class="block text-lg font-bold">08079088854</span></span>
               </a>
-              <a class="contact-item" href="mailto:giddlink@gmail.com">
-                <span class="contact-icon blue">Mail</span>
-                <span>
-                  <span class="contact-label">Direct inquiry</span>
-                  <span class="contact-value">giddlink@gmail.com</span>
-                </span>
+              <a href="mailto:giddlink@gmail.com" class="flex items-center gap-4 rounded-xl border border-white/10 bg-white/5 p-4 transition hover:border-blue">
+                <span class="rounded-lg bg-blue px-3 py-2 text-xs font-bold uppercase">Mail</span>
+                <span><span class="block text-xs uppercase tracking-widest text-white/40">Direct inquiry</span><span class="block text-lg font-bold">giddlink@gmail.com</span></span>
               </a>
             </div>
           </div>
-          <div class="form-card">
-            <form action="mailto:giddlink@gmail.com" method="post" enctype="text/plain">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" required />
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" required />
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="4" required></textarea>
-              <button type="submit">SEND MESSAGE</button>
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <form action="mailto:giddlink@gmail.com" method="post" enctype="text/plain" class="space-y-4">
+              <div><label for="name" class="mb-1 block text-xs uppercase tracking-widest text-white/40">Name</label><input id="name" name="name" type="text" required class="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 outline-none focus:border-yellow" /></div>
+              <div><label for="email" class="mb-1 block text-xs uppercase tracking-widest text-white/40">Email</label><input id="email" name="email" type="email" required class="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 outline-none focus:border-yellow" /></div>
+              <div><label for="message" class="mb-1 block text-xs uppercase tracking-widest text-white/40">Message</label><textarea id="message" name="message" rows="4" required class="w-full rounded-lg border border-white/10 bg-bg px-4 py-3 outline-none focus:border-yellow"></textarea></div>
+              <button type="submit" class="w-full rounded-full bg-yellow py-3 text-sm font-bold uppercase tracking-wide text-black transition hover:bg-white">Send Message</button>
             </form>
           </div>
         </div>
-        <div class="footer-bottom">
+        <div class="mt-16 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs uppercase tracking-widest text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <div>© 2026 NEWCOLORGAME. CREATED BY GIDEON ZION.</div>
-          <nav>
-            <a href="https://instagram.com/newcolorgame">INSTAGRAM</a>
-            <a href="https://facebook.com/newcolorgame">FACEBOOK</a>
-            <a href="https://tiktok.com/@newcolorgame">TIKTOK</a>
+          <nav class="flex gap-6">
+            <a href="https://instagram.com/newcolorgame" class="hover:text-yellow">Instagram</a>
+            <a href="https://facebook.com/newcolorgame" class="hover:text-yellow">Facebook</a>
+            <a href="https://tiktok.com/@newcolorgame" class="hover:text-yellow">TikTok</a>
           </nav>
         </div>
       </div>
     </footer>
-
     <script src="script.js"></script>
   </body>
 </html>

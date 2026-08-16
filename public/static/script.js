@@ -1,21 +1,19 @@
-// Hamburger menu
 var burger = document.querySelector(".burger");
 var menu = document.querySelector(".mobile-menu");
 if (burger && menu) {
   burger.addEventListener("click", function () {
-    var open = menu.classList.toggle("open");
+    var open = menu.classList.toggle("hidden") === false;
     burger.setAttribute("aria-expanded", String(open));
     burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
   });
   menu.querySelectorAll("a").forEach(function (a) {
     a.addEventListener("click", function () {
-      menu.classList.remove("open");
+      menu.classList.add("hidden");
       burger.setAttribute("aria-expanded", "false");
     });
   });
 }
 
-// Scroll reveals
 var observer = new IntersectionObserver(
   function (entries) {
     entries.forEach(function (entry) {
