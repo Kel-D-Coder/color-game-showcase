@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { SiteNav } from "@/components/site-nav";
 import { Reveal } from "@/components/reveal";
 import { ContactFooter } from "@/components/contact-footer";
-import heroBoard from "@/assets/hero-board.jpg";
+import heroBoard from "@/assets/IMG-20260814-WA0105.jpg";
 import modeAdventure from "@/assets/mode-adventure.jpg";
 import modeSpelling from "@/assets/mode-spelling.jpg";
 import gallery1 from "@/assets/gallery-1.jpg";
